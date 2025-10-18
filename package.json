@@ -9,25 +9,25 @@
     "mcp"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/yourusername/n8n-nodes-solannrank",
+  "homepage": "https://github.com/nguyendev/n8n-nodes-solannrank",
   "author": {
-    "name": "Your Name",
-    "email": "your.email@example.com"
+    "name": "Nguyen Dev",
+    "email": "nguyen.nah76@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/n8n-nodes-solannrank.git"
+    "url": "git+https://github.com/nguyendev/n8n-nodes-solannrank.git"
   },
   "main": "index.js",
   "scripts": {
     "build": "tsc && gulp build:icons",
     "dev": "tsc --watch",
     "format": "prettier nodes credentials --write",
-    "lint": "eslint nodes credentials package.json",
-    "lintfix": "eslint nodes credentials package.json --fix",
+    "lint": "eslint nodes/**/*.ts credentials/**/*.ts package.json",
+    "lintfix": "eslint nodes/**/*.ts credentials/**/*.ts package.json --fix",
     "verify": "node scripts/verify.js",
     "test": "npm run build && npm run verify",
-    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json"
+    "prepublishOnly": "npm run build && npm run lint"
   },
   "files": [
     "dist"
