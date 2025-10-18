@@ -1,0 +1,113 @@
+{
+  "name": "Solann Rank MCP Example Workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "When clicking 'Test workflow'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "resource": "tool",
+        "operation": "list"
+      },
+      "name": "List Tools",
+      "type": "n8n-nodes-solannrank.solannRank",
+      "typeVersion": 1,
+      "position": [470, 300],
+      "credentials": {
+        "solannRankApi": {
+          "id": "1",
+          "name": "Solann Rank API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "tool",
+        "operation": "call",
+        "toolName": "search",
+        "arguments": "{\"query\": \"example\"}"
+      },
+      "name": "Call Search Tool",
+      "type": "n8n-nodes-solannrank.solannRank",
+      "typeVersion": 1,
+      "position": [690, 300],
+      "credentials": {
+        "solannRankApi": {
+          "id": "1",
+          "name": "Solann Rank API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "prompt",
+        "operation": "list"
+      },
+      "name": "List Prompts",
+      "type": "n8n-nodes-solannrank.solannRank",
+      "typeVersion": 1,
+      "position": [470, 500],
+      "credentials": {
+        "solannRankApi": {
+          "id": "1",
+          "name": "Solann Rank API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "resource",
+        "operation": "list"
+      },
+      "name": "List Resources",
+      "type": "n8n-nodes-solannrank.solannRank",
+      "typeVersion": 1,
+      "position": [470, 700],
+      "credentials": {
+        "solannRankApi": {
+          "id": "1",
+          "name": "Solann Rank API"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "When clicking 'Test workflow'": {
+      "main": [
+        [
+          {
+            "node": "List Tools",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "List Prompts",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "List Resources",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List Tools": {
+      "main": [
+        [
+          {
+            "node": "Call Search Tool",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {}
+}
